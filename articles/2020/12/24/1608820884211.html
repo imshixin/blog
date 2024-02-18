@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.xinit.xyz","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Zeal 安装使用1.介绍Zeal 是一款离线文档浏览器，其灵感来自 OS X 平台上的 Dash，目前支持 Window 和 Liunx。基于 QT5。  支持呼出热键。只要按下组合箭 ALT+Space 即可在任何地方显示面板，不用时可以用热键隐藏的系统托盘。 可同时搜索多个文档 不依赖网络 GPL 协议开放源码 Dash 中的文档都可以在 Zeal 中使用   1.安装&gt;&gt;&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zeal文档下载">
+<meta property="og:url" content="http://blog.xinit.xyz/articles/2020/12/24/1608820884211.html">
+<meta property="og:site_name" content="Elaina&#96;s Blog">
+<meta property="og:description" content="Zeal 安装使用1.介绍Zeal 是一款离线文档浏览器，其灵感来自 OS X 平台上的 Dash，目前支持 Window 和 Liunx。基于 QT5。  支持呼出热键。只要按下组合箭 ALT+Space 即可在任何地方显示面板，不用时可以用热键隐藏的系统托盘。 可同时搜索多个文档 不依赖网络 GPL 协议开放源码 Dash 中的文档都可以在 Zeal 中使用   1.安装&gt;&gt;&amp;gt">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://b3logfile.com/file/2020/12/solofetchupload9144552948943614649-73cda5cb.png">
+<meta property="og:image" content="https://b3logfile.com/file/2020/12/solofetchupload1653165105633400942-7270dae7.png">
+<meta property="og:image" content="https://b3logfile.com/file/2020/12/solofetchupload6079761564807665517-19f82612.png">
+<meta property="article:published_time" content="2020-12-24T14:41:24.000Z">
+<meta property="article:modified_time" content="2020-12-27T06:49:18.000Z">
+<meta property="article:author" content="Elaina">
+<meta property="article:tag" content="折腾">
+<meta property="article:tag" content="软件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://b3logfile.com/file/2020/12/solofetchupload9144552948943614649-73cda5cb.png">
+
+<link rel="canonical" href="http://blog.xinit.xyz/articles/2020/12/24/1608820884211">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Zeal文档下载 | Elaina`s Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Elaina`s Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.xinit.xyz/articles/2020/12/24/1608820884211.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Elaina">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elaina`s Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Zeal文档下载
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-24 22:41:24" itemprop="dateCreated datePublished" datetime="2020-12-24T22:41:24+08:00">2020-12-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-27 14:49:18" itemprop="dateModified" datetime="2020-12-27T14:49:18+08:00">2020-12-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Zeal-安装使用"><a href="#Zeal-安装使用" class="headerlink" title="Zeal 安装使用"></a>Zeal 安装使用</h1><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>Zeal 是一款离线文档浏览器，其灵感来自 OS X 平台上的 Dash，目前支持 Window 和 Liunx。基于 QT5。</p>
+<ol>
+<li>支持呼出热键。只要按下组合箭 ALT+Space 即可在任何地方显示面板，不用时可以用热键隐藏的系统托盘。</li>
+<li>可同时搜索多个文档</li>
+<li>不依赖网络</li>
+<li>GPL 协议开放源码</li>
+<li>Dash 中的文档都可以在 Zeal 中使用</li>
+</ol>
+<p><img src="https://b3logfile.com/file/2020/12/solofetchupload9144552948943614649-73cda5cb.png"></p>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p><a target="_blank" rel="noopener" href="https://zealdocs.org/" title="打开">&gt;&gt;&gt;官网下载链接</a></p>
+<blockquote>
+<p>Zeal 支持 Windows，Mac，Linux 三系统（啊，来自 Linux 系统的福音）</p>
+</blockquote>
+<h2 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h2><p>首次打开 zeal，软件没有任何文档，需要自己去下载</p>
+<p><code>菜单栏 &gt;Tools&gt;Docsets...</code> 再点击 <code> Available</code>，显示如下（啥都没有等一会，再没有就点 <code>Refresh</code> 继续等）</p>
+<p><img src="https://b3logfile.com/file/2020/12/solofetchupload1653165105633400942-7270dae7.png"></p>
+<p>双击你想要的文档或点击下方的 Download 即可下载</p>
+<p>但是，问题来了，下载贼慢不说，下到一半网络链接超时又重新开始下载！！</p>
+<h3 id="文档下载"><a href="#文档下载" class="headerlink" title="文档下载"></a>文档下载</h3><blockquote>
+<p>文章内版本更新于 2020 年 8 月 5 日</p>
+</blockquote>
+<p>以下是每个文档的下载地址，复制链接到下载器下载好，下载好后将压缩包里的 <code>XXX.docsets</code> 解压到安装目录下的 docsets 文件夹里</p>
+<details>
+<summary>查看详细</summary>
+
+<p>| 文档名 | 版本 | 下载链接 | 文档大小<br>| —- | —- | —- |<br>| ActionScript | 27 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/ActionScript.tgz">点击下载</a> | 73.64MB |<br>| Akka | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Akka.tgz">点击下载</a> | 26.64MB |<br>| Android | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Android.tgz">点击下载</a> | 933.59MB |<br>| Angular | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Angular.tgz">点击下载</a> | 28.30MB |<br>| AngularJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/AngularJS.tgz">点击下载</a> | 2.96MB |<br>| Ansible | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Ansible.tgz">点击下载</a> | 35.28MB |<br>| Apache HTTP Server | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Apache_HTTP_Server.tgz">点击下载</a> | 2.81MB |<br>| Appcelerator Titanium | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Appcelerator_Titanium.tgz">点击下载</a> | 60.11MB |<br>| AppleScript | 4 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/AppleScript.tgz">点击下载</a> | 47.82MB |<br>| Arduino | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Arduino.tgz">点击下载</a> | 135.30MB |<br>| AWS JavaScript | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/AWS_JavaScript.tgz">点击下载</a> | 11.51MB |<br>| BackboneJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/BackboneJS.tgz">点击下载</a> | 5.86MB |<br>| Bash | 6 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Bash.tgz">点击下载</a> | 0.58MB |<br>| Boost | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Boost.tgz">点击下载</a> | 167.71MB |<br>| Bootstrap 2 | 3 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Bootstrap_2.tgz">点击下载</a> | 3.04MB |<br>| Bootstrap 3 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Bootstrap_3.tgz">点击下载</a> | 2.69MB |<br>| Bootstrap 4 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Bootstrap_4.tgz">点击下载</a> | 1.81MB |<br>| Bourbon | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Bourbon.tgz">点击下载</a> | 0.04MB |<br>| C | 57 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/C.tgz">点击下载</a> | 118.49MB |<br>| C++ | 63 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/C++.tgz">点击下载</a> | 120.54MB |<br>| CakePHP | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/CakePHP.tgz">点击下载</a> | 15.15MB |<br>| Cappuccino | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Cappuccino.tgz">点击下载</a> | 16.88MB |<br>| Chai | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Chai.tgz">点击下载</a> | 0.47MB |<br>| Chef | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Chef.tgz">点击下载</a> | 13.06MB |<br>| Clojure | 13 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Clojure.tgz">点击下载</a> | 3.05MB |<br>| CMake | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/CMake.tgz">点击下载</a> | 6.17MB |<br>| Cocos2D | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Cocos2D.tgz">点击下载</a> | 1.32MB |<br>| Cocos2D-X | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Cocos2D-X.tgz">点击下载</a> | 11.00MB |<br>| Cocos3D | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Cocos3D.tgz">点击下载</a> | 3.39MB |<br>| CodeIgniter | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/CodeIgniter.tgz">点击下载</a> | 8.31MB |<br>| CoffeeScript | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/CoffeeScript.tgz">点击下载</a> | 2.66MB |<br>| ColdFusion | 3 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/ColdFusion.tgz">点击下载</a> | 107.50MB |<br>| Common Lisp | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Common_Lisp.tgz">点击下载</a> | 4.31MB |<br>| Compass | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Compass.tgz">点击下载</a> | 0.60MB |<br>| Cordova | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Cordova.tgz">点击下载</a> | 5.80MB |<br>| Corona | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Corona.tgz">点击下载</a> | 4.87MB |<br>| CouchDB | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/CouchDB.tgz">点击下载</a> | 9.08MB |<br>| Craft | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Craft.tgz">点击下载</a> | 13.74MB |<br>| CSS | 96 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/CSS.tgz">点击下载</a> | 58.43MB |<br>| D3JS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/D3JS.tgz">点击下载</a> | 21.70MB |<br>| Dart | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Dart.tgz">点击下载</a> | 15.16MB |<br>| Django | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Django.tgz">点击下载</a> | 8.82MB |<br>| Docker | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Docker.tgz">点击下载</a> | 41.96MB |<br>| Doctrine | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Doctrine_ORM.tgz">点击下载</a> | 0.91MB |<br>| Dojo | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Dojo.tgz">点击下载</a> | 18.84MB |<br>| Drupal 7 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Drupal_7.tgz">点击下载</a> | 172.10MB |<br>| Drupal 8 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Drupal_8.tgz">点击下载</a> | 647.11MB |<br>| ElasticSearch | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/ElasticSearch.tgz">点击下载</a> | 44.73MB |<br>| Elixir | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Elixir.tgz">点击下载</a> | 2.90MB |<br>| Emacs Lisp | 13 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Emacs_Lisp.tgz">点击下载</a> | 2.62MB |<br>| EmberJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/EmberJS.tgz">点击下载</a> | 39.36MB |<br>| Emmet | 3 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Emmet.tgz">点击下载</a> | 0.05MB |<br>| Erlang | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Erlang.tgz">点击下载</a> | 36.08MB |<br>| Express | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Express.tgz">点击下载</a> | 6.39MB |<br>| ExpressionEngine | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/ExpressionEngine.tgz">点击下载</a> | 11.36MB |<br>| ExtJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/ExtJS.tgz">点击下载</a> | 160.78MB |<br>| Flask | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Flask.tgz">点击下载</a> | 1.45MB |<br>| Font Awesome | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Font_Awesome.tgz">点击下载</a> | 5.15MB |<br>| Foundation | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Foundation.tgz">点击下载</a> | 6.00MB |<br>| GLib | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/GLib.tgz">点击下载</a> | 0.98MB |<br>| Go | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Go.tgz">点击下载</a> | 19.66MB |<br>| Gradle DSL | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Gradle_DSL.tgz">点击下载</a> | 31.93MB |<br>| Gradle Java API | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Gradle_Java_API.tgz">点击下载</a> | 8.59MB |<br>| Gradle User Guide | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Gradle_User_Guide.tgz">点击下载</a> | 31.92MB |<br>| Grails | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Grails.tgz">点击下载</a> | 8.77MB |<br>| Groovy | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Groovy.tgz">点击下载</a> | 12.57MB |<br>| Groovy JDK | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Groovy_JDK.tgz">点击下载</a> | 1.14MB |<br>| Grunt | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Grunt.tgz">点击下载</a> | 1.08MB |<br>| Gulp | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Gulp.tgz">点击下载</a> | 0.30MB |<br>| Haml | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Haml.tgz">点击下载</a> | 0.33MB |<br>| Handlebars | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Handlebars.tgz">点击下载</a> | 2.31MB |<br>| Haskell | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Haskell.tgz">点击下载</a> | 15.45MB |<br>| HTML | 84 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/HTML.tgz">点击下载</a> | 77.42MB |<br>| Ionic | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Ionic.tgz">点击下载</a> | 30.03MB |<br>| Jasmine | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Jasmine.tgz">点击下载</a> | 0.16MB |<br>| Java EE6 | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_EE6.tgz">点击下载</a> | 9.27MB |<br>| Java EE7 | 3 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_EE7.tgz">点击下载</a> | 16.06MB |<br>| Java EE8 | 1 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_EE8.tgz">点击下载</a> | 17.18MB |<br>| Java SE10 | 3 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_SE10.tgz">点击下载</a> | 80.31MB |<br>| Java SE11 | 5 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_SE11.tgz">点击下载</a> | 57.94MB |<br>| Java SE12 | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_SE12.tgz">点击下载</a> | 59.62MB |<br>| Java SE6 | 6 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_SE6.tgz">点击下载</a> | 43.17MB |<br>| Java SE7 | 11 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_SE7.tgz">点击下载</a> | 45.40MB |<br>| Java SE8 | 29 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_SE8.tgz">点击下载</a> | 52.45MB |<br>| Java SE9 | 3 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Java_SE9.tgz">点击下载</a> | 82.73MB |<br>| JavaFX | 18 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/JavaFX.tgz">点击下载</a> | 13.03MB |<br>| JavaScript | 87 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/JavaScript.tgz">点击下载</a> | 338.17MB |<br>| Jekyll | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Jekyll.tgz">点击下载</a> | 1.07MB |<br>| Jinja | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Jinja.tgz">点击下载</a> | 0.80MB |<br>| Joomla | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Joomla.tgz">点击下载</a> | 4.87MB |<br>| jQuery | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/jQuery.tgz">点击下载</a> | 24.35MB |<br>| jQuery Mobile | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/jQuery_Mobile.tgz">点击下载</a> | 4.28MB |<br>| jQuery UI | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/jQuery_UI.tgz">点击下载</a> | 41.79MB |<br>| Julia | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Julia.tgz">点击下载</a> | 4.07MB |<br>| KnockoutJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/KnockoutJS.tgz">点击下载</a> | 0.65MB |<br>| Kobold2D | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Kobold2D.tgz">点击下载</a> | 3.62MB |<br>| Laravel | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Laravel.tgz">点击下载</a> | 8.02MB |<br>| LaTeX | 12 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/LaTeX.tgz">点击下载</a> | 1.33MB |<br>| Less | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Less.tgz">点击下载</a> | 0.73MB |<br>| Lo-Dash | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Lo-Dash.tgz">点击下载</a> | 0.38MB |<br>| Lua 5.1 | 4 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Lua_5.1.tgz">点击下载</a> | 0.33MB |<br>| Lua 5.2 | 4 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Lua_5.2.tgz">点击下载</a> | 0.29MB |<br>| Lua 5.3 | 4 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Lua_5.3.tgz">点击下载</a> | 0.21MB |<br>| MarionetteJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/MarionetteJS.tgz">点击下载</a> | 0.52MB |<br>| Markdown | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Markdown.tgz">点击下载</a> | 0.01MB |<br>| MatPlotLib | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Matplotlib.tgz">点击下载</a> | 145.97MB |<br>| Meteor | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Meteor.tgz">点击下载</a> | 4.57MB |<br>| Mocha | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Mocha.tgz">点击下载</a> | 1.36MB |<br>| MomentJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/MomentJS.tgz">点击下载</a> | 2.85MB |<br>| MongoDB | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/MongoDB.tgz">点击下载</a> | 40.87MB |<br>| Mongoose | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Mongoose.tgz">点击下载</a> | 10.62MB |<br>| Mono | 6 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Mono.tgz">点击下载</a> | 1846.38MB |<br>| MooTools | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/MooTools.tgz">点击下载</a> | 1.43MB |<br>| MySQL | 21 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/MySQL.tgz">点击下载</a> | 13.53MB |<br>| Neat | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Neat.tgz">点击下载</a> | 0.26MB |<br>| NET Framework | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/NET_Framework.tgz">点击下载</a> | 455.09MB |<br>| Nginx | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Nginx.tgz">点击下载</a> | 0.68MB |<br>| NodeJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/NodeJS.tgz">点击下载</a> | 5.33MB |<br>| NumPy | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/NumPy.tgz">点击下载</a> | 11.95MB |<br>| OCaml | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/OCaml.tgz">点击下载</a> | 1.72MB |<br>| OpenCV | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/OpenCV.tgz">点击下载</a> | 76.77MB |<br>| OpenGL 2 | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/OpenGL_2.tgz">点击下载</a> | 1.00MB |<br>| OpenGL 3 | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/OpenGL_3.tgz">点击下载</a> | 0.58MB |<br>| OpenGL 4 | 7 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/OpenGL_4.tgz">点击下载</a> | 1.45MB |<br>| Pandas | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Pandas.tgz">点击下载</a> | 87.99MB |<br>| Perl | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Perl.tgz">点击下载</a> | 7.76MB |<br>| Phalcon | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Phalcon.tgz">点击下载</a> | 13.14MB |<br>| PhoneGap | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/PhoneGap.tgz">点击下载</a> | 56.11MB |<br>| PHP | 85 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/PHP.tgz">点击下载</a> | 67.56MB |<br>| PHPUnit | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/PHPUnit.tgz">点击下载</a> | 2.19MB |<br>| Play Java | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Play_Java.tgz">点击下载</a> | 2.29MB |<br>| Play Scala | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Play_Scala.tgz">点击下载</a> | 9.07MB |<br>| Polymer.dart | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Polymer.dart.tgz">点击下载</a> | 1.15MB |<br>| PostgreSQL | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/PostgreSQL.tgz">点击下载</a> | 3.77MB |<br>| Processing | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Processing.tgz">点击下载</a> | 4.26MB |<br>| PrototypeJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/PrototypeJS.tgz">点击下载</a> | 1.87MB |<br>| Pug | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Pug.tgz">点击下载</a> | 1.70MB |<br>| Puppet | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Puppet.tgz">点击下载</a> | 7.96MB |<br>| Python 2 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Python_2.tgz">点击下载</a> | 10.60MB |<br>| Python 3 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Python_3.tgz">点击下载</a> | 13.62MB |<br>| Qt 4 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Qt_4.tgz">点击下载</a> | 64.73MB |<br>| Qt 5 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Qt_5.tgz">点击下载</a> | 148.47MB |<br>| R | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/R.tgz">点击下载</a> | 29.98MB |<br>| Racket | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Racket.tgz">点击下载</a> | 146.14MB |<br>| React | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/React.tgz">点击下载</a> | 3.64MB |<br>| Redis | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Redis.tgz">点击下载</a> | 2.18MB |<br>| RequireJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/RequireJS.tgz">点击下载</a> | 0.45MB |<br>| Ruby | 7 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Ruby.tgz">点击下载</a> | 58.37MB |<br>| Ruby 2 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Ruby_2.tgz">点击下载</a> | 45.91MB |<br>| Ruby on Rails 3 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Ruby_on_Rails_3.tgz">点击下载</a> | 6.90MB |<br>| Ruby on Rails 4 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Ruby_on_Rails_4.tgz">点击下载</a> | 5.94MB |<br>| Ruby on Rails 5 | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Ruby_on_Rails_5.tgz">点击下载</a> | 7.93MB |<br>| Ruby on Rails 6 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Ruby_on_Rails_6.tgz">点击下载</a> | 32.74MB |<br>| RubyMotion | 3 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/RubyMotion.tgz">点击下载</a> | 5.48MB |<br>| Rust | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Rust.tgz">点击下载</a> | 42.93MB |<br>| SailsJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/SailsJS.tgz">点击下载</a> | 7.56MB |<br>| SaltStack | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/SaltStack.tgz">点击下载</a> | 19.38MB |<br>| Sass | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Sass.tgz">点击下载</a> | 3.81MB |<br>| Scala | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Scala.tgz">点击下载</a> | 39.96MB |<br>| SciPy | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/SciPy.tgz">点击下载</a> | 21.89MB |<br>| Semantic UI | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Semantic_UI.tgz">点击下载</a> | 9.64MB |<br>| Sencha Touch | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Sencha_Touch.tgz">点击下载</a> | 18.29MB |<br>| Sinon | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Sinon.tgz">点击下载</a> | 0.21MB |<br>| Smarty | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Smarty.tgz">点击下载</a> | 0.42MB |<br>| Sparrow | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Sparrow.tgz">点击下载</a> | 0.90MB |<br>| Spring Framework | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Spring_Framework.tgz">点击下载</a> | 35.43MB |<br>| SQLAlchemy | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/SQLAlchemy.tgz">点击下载</a> | 3.92MB |<br>| SQLite | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/SQLite.tgz">点击下载</a> | 9.31MB |<br>| Statamic | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Statamic.tgz">点击下载</a> | 10.42MB |<br>| Stylus | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Stylus.tgz">点击下载</a> | 0.59MB |<br>| Susy | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Susy.tgz">点击下载</a> | 0.48MB |<br>| SVG | 72 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/SVG.tgz">点击下载</a> | 21.03MB |<br>| Swift | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Swift.tgz">点击下载</a> | 5.82MB |<br>| Symfony | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Symfony.tgz">点击下载</a> | 14.33MB |<br>| Tcl | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Tcl.tgz">点击下载</a> | 1.71MB |<br>| Tornado | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Tornado.tgz">点击下载</a> | 7.37MB |<br>| Twig | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Twig.tgz">点击下载</a> | 0.74MB |<br>| Twisted | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Twisted.tgz">点击下载</a> | 15.44MB |<br>| TypeScript | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/TypeScript.tgz">点击下载</a> | 4.90MB |<br>| TYPO3 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/TYPO3.tgz">点击下载</a> | 50.83MB |<br>| UnderscoreJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/UnderscoreJS.tgz">点击下载</a> | 0.54MB |<br>| Unity 3D | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Unity_3D.tgz">点击下载</a> | 251.59MB |<br>| Vagrant | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Vagrant.tgz">点击下载</a> | 2.41MB |<br>| Vim | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Vim.tgz">点击下载</a> | 3.22MB |<br>| VMware vSphere | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/VMware_vSphere.tgz">点击下载</a> | 16.92MB |<br>| VueJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/VueJS.tgz">点击下载</a> | 5.59MB |<br>| WordPress | 77 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/WordPress.tgz">点击下载</a> | 290.09MB |<br>| Xamarin | 3 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Xamarin.tgz">点击下载</a> | 1103.36MB |<br>| Xojo | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Xojo.tgz">点击下载</a> | 144.90MB |<br>| XSLT | 48 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/XSLT.tgz">点击下载</a> | 5.98MB |<br>| Yii | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Yii.tgz">点击下载</a> | 15.52MB |<br>| YUI | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/YUI.tgz">点击下载</a> | 14.24MB |<br>| Zend Framework 1 | 2 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Zend_Framework_1.tgz">点击下载</a> | 26.40MB |<br>| Zend Framework 2 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Zend_Framework_2.tgz">点击下载</a> | 18.53MB |<br>| Zend Framework 3 | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/Zend_Framework_3.tgz">点击下载</a> | 20.60MB |<br>| ZeptoJS | 0 | <a target="_blank" rel="noopener" href="http://tokyo.kapeli.com/feeds/ZeptoJS.tgz">点击下载</a> | 0.32MB |</p>
+</details>
+
+<h2 id="3-解析过程（可以不看）"><a href="#3-解析过程（可以不看）" class="headerlink" title="3.解析过程（可以不看）"></a>3.解析过程（可以不看）</h2><p>通过 fiddler 抓包获得了 zeal 请求的文档列表数据(只列举两个)</p>
+<p><a target="_blank" rel="noopener" href="http://api.zealdocs.org/v1/docsets">http://api.zealdocs.org/v1/docsets</a></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;sourceId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;com.kapeli&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ActionScript&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ActionScript&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;versions&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;3&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;revision&quot;</span><span class="punctuation">:</span> <span class="string">&quot;27&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABwElEQVR42pyTv07bUBTGf8dOAg1xSqmSAaSCMhGEHJkFCcTABKi4khkQL8AD8AY8AhMDQ4UYGJh4gbAhMTlAVXaQYEBQSqwEJXJzOrgyiTAt6pnu+XO/e77z3SOqSkVE+Q87U5VURUS/JiQrDw+kBgdj/8JxeDo97a0RUSMJ2ZieRiyrJybz84ldJALkFhYwTbMn9sHzkLcAGEB+ZeVFoeU4UCq9oYOpKYbKZQA6jQbtqysABnI5sq77b4Ah1yWdyQBwf3DA9eZmnHu/tvbiQq8vgqyuxu7t1hY/9vfpNJsAfHQcdHT0dQCzXObTxAQA7ctLns7PodUiODkBINPXx7vFxdcB8ktL8fluby+e+u3OzrNCngciCQDpNHheNLwgINjexgIEqB8e0mk0ACjMzSFdasQA5vg4pdlZAJqPj5wND/NtZgYtFKDVon50BEB/Nkuui4bBn1e6JRoYGeHL8TGfq1Wy6+sRjd3dOJ9y3WcaNqhvWXrj+5pkN76vNdBaPq+/gkBVVcMw1FqxqDZEuyAbGxRtO/GvF22b+tgYPw2D+2o1omuahMvLkfKqyqSImn9Z2zagQLpraCHwXVV+DwDt+Z4JbwqWpAAAAABJRU5ErkJggg==&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;icon2x&quot;</span><span class="punctuation">:</span> <span class="string">&quot;iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADFElEQVRYhcWXy0sbURTGf6MJ+EJQKD5CjQh2YRQkalDQTTAQfKzciAjirrbxr/AvKNLSnVl0IYKiG8EX4kYXulAIRArJwtdCUHGRZDTD3C7GPOaRmNiafnAId+abc7773ZMzjNQD9gRMS/AF6KU0OBHwoxJ+2RIw/bWtbeHz8HBTWXNzSaqrNzfun7u7C9+jUXDBcdLvTwqHQwgoTTgcIun3J11wjOvlQsmKZ4lwgSgD4Pq6JNbr8FKzrPSV9XibgM1Na2PX1orP5Sr27NrbhVBVYQlFEcLpLDhXpgeKQSAAkmR9r7wc5ube0YGaGiEeH613n8LdnRCVle/kwMwM1Nbm59TXw9TUOzggSUKEw/l3n8LpacEOFC7A5yuseApDQ8UdgfpazM+jqiqqqiKEyEQopF+nIhBAFHACkgtECIgBOXobWlvh7AzKMi0jSRLEYtDXB8fHUF2tf0ZRwOWC62vLvBVAJ1mDSAYSL7+mmJ1FlmXkeDwdiVgMORhEvrhAXlrS3ZPjceTnZ+SZmXReY5gcyPk2qKqCoyNz9wsBPh9SJAJtbbC3Z54P9/fQ3w/PzyYXml4csKUuJAyE9ANjY2CzQTyuJxweQiSi8aJR2NmBwUE9p6ICRkZgfV2fMwtpAXIuARMT5uIAwaCeGwyC223mTUykBVghpwBAS9jYaBZwdaU5kC346AjOz6GlRc91OqGzE0IhvWCjAOMRADA6imS1+5UVrQeyIQTS8rL2rjBifPx1ASYHPnyAri6IxbS/XFppAra3szLY0s0nHRzA5KTWuNlwu6GuDh4eTNpyC/B6kZ6ezLvZ3tZEANjtsLiozYBskVaueb2wumpqROsjsNvB4zHvXgjY2sqse3q0wvG4nmeFgQHY2ABFKeAIciUOh+H2NrP2eHS7zSvCZoPubjg50V+2FNDba514fz/DaWjQwmh3PhEej0lAehJ+M6o14BWDC+cqCgDzGCahbEF6q4hixOYfRH+ZvFABJ1fQ/RFsv/+xgFzcT8AVKMApHTAbgMsLSJbqs+wSkgG47IBZ6X9/nv8B4pwbn9mt7LIAAAAASUVORK5CYII=&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;extra&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;indexFilePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;package-detail.html&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span>， <span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;sourceId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;com.kapeli&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Apache_HTTP_Server&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Apache HTTP Server&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;versions&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;2.4.43&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.41&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.39&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.38&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.37&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.35&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.34&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.33&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.29&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.28&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.27&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.25&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.23&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.20&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.18&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.17&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.16&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.12&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.10&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.4.9&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.2.27&quot;</span><span class="punctuation">,</span> <span class="string">&quot;2.0.65&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;revision&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;icon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACtklEQVQ4EY2SXUgUURTHz52d2XXXwfVj1dbVVTfzq6wehLIv9UmyKBAsDXzoIaiHCvMl+rCrvRQkBL2EYCxJDxlFHy+Z0Cq6iSuZJNmaqWQ4meLu2G7azszOdGd1ysWEznA4c8+c3/zPvecC/IcpAMhVhmmttAO2bvI0OC4OXsiZRlpyo4jLymjc3S2p3101kEUbttUbE4QTmaUBCz/PgG5DEIByYYzKnc4wqTG3HTx9OSnG4bQAfwDF0yZBlmGRo2b/2UEHVOuOwSMVhFtQXJt+suqGKdlu9418hLQZj8g6gnKiI2Dg+F89f/aldbIGZu9Vnm215O2onfUtwydnr2Sa8+lM2TbGzEkQDC3ChDj5NKoDDa4BSDtc29hltG4uHO4fDUP/V2TPZVFmaTaaGh1d8LtnXEugH2+GkRZKU8Zkz2rbFQDWQ3VNLjneXth3p0+M6f+myymIo2yUgqzBEOwv2ZXkT1NGmuHlJQWf8msdqJFMC8B5pKGXSs7Z52l7I9qteibFagAlwIdNkvjDuCTF8WZqtofxHW/74HKropEfYDJj3I2luyV1jYnb9zQNPHsr2nQKk6pDkLUzGYxbrPCw/fH9m3M9t4lGkPg48YjRGDClwvUARbGO/Cve95/BFhLohEwDCDwf+D7M04ifV9hN5iGYg3cqpV4sohzpmL6GATDxosrzV0UBMfohLpSewaLc3QX6wSnvl6rO1jMwDQuEG1NAIaD6rMAkBzTCWG6GlL1xbFK1f4KD/AzWYDEimHQPSn5K6CI1HuLCKhxRVUHNIveAtRWfm3IPcD9Dy899DBPrXZLDr7mxJ69g+oUKNgEih4VkDYqK1y3leS2pFYE6Qz6ZYLSpe43OrF9RDEUfXQyHHrSHvJ0KOVBVccX/HtR6bE2m2phrI8v41ZSqqPmaqo1ffwPQhgcNITazvAAAAABJRU5ErkJggg==&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;icon2x&quot;</span><span class="punctuation">:</span> <span class="string">&quot;iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFkElEQVR42rxWa2wUVRg989z3tttut6UPClqQQqO1oIIVsAiJwo9Cgk0gGuOjGo0REzU+Y0KA6A8jMZpGJWmRQAgJmqDSEK0IhlrAloJtpTT0RVnKttvd6Wz3Obsz3tmdLQuClNL2Jl/uvZude853zvfdGQozP6gfny66N03PvMkz1DPUTAL/smneagNLb9EZlHXm+/wQ2yxgZwCYPry+5EWrRXpOZ1TKzfMDsCzygTFJ006Abtg8/yUjR3/EsLECPp2CPi8C1qIgKvBQ5IT400GA+sSxZvWyVc7PdWBLqDAPhpMBWUJ0VCEzASbbsJuHX5IvTiUBapvjiSVGittptKWXh9hioKeDZCxBiUYSGRNgdVbIHAsBwag8OCUE3s4st2ez5q0Gg/G17IpHkbWsDGLfEHxtQ7DL7jgglGsEVBWi/hjEsNR5twRoIvdGA83uyigtseY+VYGAEERz7e8IDLhgZCxQQgqyZE8cVNFCJSMFw+gYUJomTeCNjKVZhVx6HZF7XcGGJ8Hn5KDzaDucp7oIsAITAzIDAdkCj88Aa0yEThESRIgkQUV27WjpOzYZAtTWrFUPWRndQcfSxQWq5K4eN8599hM4SSLACoxsAlwlos56hgUbtYEXbIBXRpc4gjbBUw90jVGTkLzaYjR/rWZtmFOI5oOn4O50EtAEmEHLnFX8CIREyPECuH4Mx/y/bh8+voUs+++EAL3dsfqVzAx7TeGmSowFgaa9J0BHpPFM4wRI9lYTh+Kqx8Cn6XF69yFc6O89umf0bM1lSSQeQCJBigJXSIwydwLuyM2vKarejMEeD07uawQvywm/CWgiEt7rEUP4n15YTDosqFwB1h+dW+ThHzDT/MHOiLuLnDdCYoxEjL2TzO95vgqtP5/DpdZeTWplXPKkBddsUBA42Qa4vZj3SAm6T7fn5nNWnQY+7svtLKDesy9flm+2N6rgHSf60N/aHQcxMdS45KkWqAVoIHueThweJSq1uIbRHHC+Xye01moEYkmA/1Wg2rbYQS6YA2p/D13xE/CL8cPNLHMNkOxZRDAsem5acOrol4S9BPwHsvSnZn87AmwRn/lFZmlJPpWdh5av6kk7xWBlufFMk5kXVS4HZzfjWM0Bf4v30q464Ux9ClCEhJuEi0RQvRNTQW5VhNQH9hVrHZmOHXkb1qLpu+NQImOwcTwpNCpRcNplo65jPZeROduBuSvK+Eibc+kixt7eGLzUoIEOa7IHbsz+lgqo0tsZY7zXO+rPISS6CbiOSJ/0XbnOAj2ZhSMnMTI7C6FgaCygSH1aq0VuV+E3I8AUcrZ3MhbOzwuGaLg6u4nsDKxcwneenCn4RuC5id/iQF97rffMW72St/1GqSdMoMpakmOiuZdnVZSjZX8jWCaMDM467vecxx+ELi8dR2v2D+0b/fvds6HBAe1RtbJFTXav2gATIXBjDbDPppd+m1t2f1kgQOPy+fPI4o2wcPT4ZQPnELIXzkZafrYpozdQPCqHa51RUZV8SPN7lER4otdrqgLUq7aHFxgotmpW+RL8tbsh7rmNYxMXS0rV9x06joteAT453JzNmnwauDKZt2oqAbaQS/vYUbYIQtdVBEMe5Out8ayTNxtDVO7yCBgM+nt/8/d82uDv/kOTe/KfUcnFektxwUrTnA4alOVWf45B8Q9IwqGdI01fal4n2ys6WQJJBZhSfc4LKrgKskc4+3pKcSWHorWVV5Nc1PbK3SiQJKCz0rpqdeGUxO8J+J8agPwfEYCQFrGp+J5UCdAf2lduZCg6L6LEXIfHLnxDfhvUXpcKpnmQdxY4I81VqpvmoHNbZ9jdo/k67eBJAjpCYA2Rvu6A2H6E7IWpkneiXWAlMUvL+CoJ30xlnyTAQf2KShRcaCazV8e/AgwAzFxBrzZw9DMAAAAASUVORK5CYII=&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的数据，有用的有：</p>
+<ul>
+<li>name：文档名（请求 url 用）</li>
+<li>title：文档名（文件夹名称用）</li>
+<li>revision：文档版本（应该吧）</li>
+<li>icon 和 icon2x：文档名字前面的小图标的 base64 编码</li>
+</ul>
+<p>此外，还有下载文档的链接地址</p>
+<blockquote>
+<p>我下载的是 Android 这个文档</p>
+</blockquote>
+<p><img src="https://b3logfile.com/file/2020/12/solofetchupload6079761564807665517-19f82612.png"></p>
+<p>可以看到下载 Android 文档是这样的过程</p>
+<ol>
+<li>请求 <code>https://go.zealdocs.org/d/com.kapeli/Android/latest</code> 得到右下角的重定向链接</li>
+<li>请求 <code>https://singapore.kapeli.com/feeds/Android.tgz</code> 便可得到文档</li>
+</ol>
+<p>那么，<code>AngularJS</code> 的文档地址为 <code>https://singapore.kapeli.com/feeds/AngularJS.tgz</code></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%98%E8%85%BE/" rel="tag"># 折腾</a>
+              <a href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag"># 软件</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/articles/2020/12/24/1608820780879.html" rel="prev" title="[Python] 更换国内pip源">
+      <i class="fa fa-chevron-left"></i> [Python] 更换国内pip源
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/articles/2020/12/24/1608820908041.html" rel="next" title="zeal文档小图标写入">
+      zeal文档小图标写入 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Zeal-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Zeal 安装使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">1.安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">2.使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.3.1.</span> <span class="nav-text">文档下载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B%EF%BC%88%E5%8F%AF%E4%BB%A5%E4%B8%8D%E7%9C%8B%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">3.解析过程（可以不看）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Elaina</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Elaina</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

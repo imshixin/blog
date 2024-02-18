@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.xinit.xyz","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="学smail去反编译分析代码?(别干坏事)  语法基本数据类型   类型关键字 对应Java中的类型说明    V void，只能用于返回类型   Z boolean   B byte   S short   C char   I int   J long (64 bits)   F float   D double (64 bits)   注意了,布尔值对应的字母为Z,long对应的字母为J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="smail语法">
+<meta property="og:url" content="http://blog.xinit.xyz/articles/2020/12/27/1609055209087.html">
+<meta property="og:site_name" content="Elaina&#96;s Blog">
+<meta property="og:description" content="学smail去反编译分析代码?(别干坏事)  语法基本数据类型   类型关键字 对应Java中的类型说明    V void，只能用于返回类型   Z boolean   B byte   S short   C char   I int   J long (64 bits)   F float   D double (64 bits)   注意了,布尔值对应的字母为Z,long对应的字母为J">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://b3logfile.com/bing/20191221.jpg?imageView2/1/w/960/h/540/interlace/1/q/100">
+<meta property="article:published_time" content="2020-12-27T07:46:49.000Z">
+<meta property="article:modified_time" content="2020-12-27T07:48:21.000Z">
+<meta property="article:author" content="Elaina">
+<meta property="article:tag" content="待分类">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://b3logfile.com/bing/20191221.jpg?imageView2/1/w/960/h/540/interlace/1/q/100">
+
+<link rel="canonical" href="http://blog.xinit.xyz/articles/2020/12/27/1609055209087">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>smail语法 | Elaina`s Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Elaina`s Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.xinit.xyz/articles/2020/12/27/1609055209087.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Elaina">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elaina`s Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          smail语法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-27 15:46:49 / 修改时间：15:48:21" itemprop="dateCreated datePublished" datetime="2020-12-27T15:46:49+08:00">2020-12-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://b3logfile.com/bing/20191221.jpg?imageView2/1/w/960/h/540/interlace/1/q/100"></p>
+<blockquote>
+<p>学smail去反编译分析代码?(别干坏事)</p>
+</blockquote>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><table>
+<thead>
+<tr>
+<th>类型关键字</th>
+<th>对应Java中的类型说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>V</td>
+<td>void，只能用于返回类型</td>
+</tr>
+<tr>
+<td><strong>Z</strong></td>
+<td><strong>boolean</strong></td>
+</tr>
+<tr>
+<td>B</td>
+<td>byte</td>
+</tr>
+<tr>
+<td>S</td>
+<td>short</td>
+</tr>
+<tr>
+<td>C</td>
+<td>char</td>
+</tr>
+<tr>
+<td>I</td>
+<td>int</td>
+</tr>
+<tr>
+<td>J</td>
+<td>long (64 bits)</td>
+</tr>
+<tr>
+<td>F</td>
+<td>float</td>
+</tr>
+<tr>
+<td>D</td>
+<td>double (64 bits)</td>
+</tr>
+</tbody></table>
+<p>注意了,布尔值对应的字母为Z,long对应的字母为J,其他的都是首字母大写</p>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>Object类型，即引用类型的对象，在引用时，<strong>使用L开头</strong>，后面紧接着的是完整的包名，比如：<code>java.lang.String</code>对应的Smali语法则是 <code>Ljava/lang/String</code></p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>数组定义比较有意思，一维数组在类型的左边加一个方括号，比如：<code>[I</code>等同于Java的 <code>int[]</code>，每多一维就加一个方括号,[[I就等同于Java的int[][]，最多可以设置255维</p>
+<h3 id="方法声明和调用"><a href="#方法声明和调用" class="headerlink" title="方法声明和调用"></a>方法声明和调用</h3><p>官方Wiki中给出的Smali引用方法的模板如下：<br><code>Lpackage/name/ObjectName;-&gt;MethodName(III)Z</code><br>第一部分 <code>Lpackage/name/ObjectName;</code>用于声明具体的类型，以便JVM寻找</p>
+<p>第二部分 <code>MethodName(III)Z</code>，其中MethodName为具体的方法名，<code>()</code>中的字符，表示了参数数量和类型，即3个int型参数，Z为返回值的类型，即返回Boolean类型</p>
+<p>由于方法的参数列表没有使用逗号这样的分隔符进行划分，所以只能从左到右，根据类型定义来区分参数个数，这一点需要比较仔细来观察</p>
+<p>如果需要调用构造方法，则MethodName为：<code>&lt;init&gt;</code></p>
+<h3 id="寄存器声明"><a href="#寄存器声明" class="headerlink" title="寄存器声明"></a>寄存器声明</h3><p>在Smali中，如果需要存储变量，必须先声明足够数量的寄存器，1个寄存器可以存储32位长度的类型，比如Int，而两个寄存器可以存储64位长度类型的数据，比如Long或Double, String类型实际上是一个对象,只需要一个寄存器</p>
+<p>声明可使用的寄存器数量的方式为：<code>.registers N</code>，N代表需要的寄存器的总个数</p>
+<p><code>.registers 3</code>表示声明3个寄存器</p>
+<blockquote>
+<p>还有一个关键字 <code>.locals</code>，它用于声明非参数的寄存器个数（包含在registers声明的个数当中），也叫做本地寄存器，只在一个方法内有效，但不常用，一般使用registers即可</p>
+</blockquote>
+<p>寄存器有两种命名方式，V命名方式和P命名方法。P命名方式中的第一个寄存器就是方法中的第一个参数寄存器,在非static方法中有个this指针需要一个寄存器,一般为<strong>p0</strong>,则p1为第一个参数,依次类推,v0,v1,…为自己定义的本地寄存器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.method static test(I)V</span><br><span class="line">	.registers <span class="number">1</span>  <span class="comment"># 声明总共需要使用1个寄存器</span></span><br><span class="line"></span><br><span class="line">	const-string v0, <span class="string">&quot;LOG&quot;</span>  <span class="comment"># 将v0寄存器赋值为字符串常量&quot;LOG&quot;</span></span><br><span class="line">	<span class="keyword">return</span>-void</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>再举例,如果一个Java方法声明如下：<code>myMethod(int p1, float p2, boolean p3)Z</code></p>
+<p>那么对应的Smali则为：<code>method LMyObject;-&gt;myMethod(IJZ)V</code><br>此时，寄存器的对应情况如下：</p>
+<table>
+<thead>
+<tr>
+<th>寄存器名称</th>
+<th>对应的引用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>p0</td>
+<td>this</td>
+</tr>
+<tr>
+<td>p1</td>
+<td>int型的p1参数</td>
+</tr>
+<tr>
+<td>p2, p3</td>
+<td>float型的p2参数</td>
+</tr>
+<tr>
+<td>p4</td>
+<td>boolean型的p3参数</td>
+</tr>
+</tbody></table>
+<p>那么最少需要的寄存器个数则为：5</p>
+<h3 id="指令集"><a href="#指令集" class="headerlink" title="指令集"></a>指令集</h3><h4 id="1-赋值"><a href="#1-赋值" class="headerlink" title="1. 赋值"></a>1. 赋值</h4><table>
+<thead>
+<tr>
+<th align="center">指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">move v1,v2</td>
+<td>将v2中的值移入到v1寄存器中（4位，支持int型）</td>
+</tr>
+<tr>
+<td align="center">move&#x2F;from16 v1,v2</td>
+<td>将16位的v2寄存器中的值移入到8位的v1寄存器中</td>
+</tr>
+<tr>
+<td align="center">move&#x2F;16 v1,v2</td>
+<td>将16位的v2寄存器中的值移入到16位的v1寄存器中</td>
+</tr>
+<tr>
+<td align="center">move-wide v1,v2</td>
+<td>将寄存器对（一组，用于支持双字型）v2中的值移入到v1寄存器对中（4位，猜测支持float、double型）</td>
+</tr>
+<tr>
+<td align="center">move-wide&#x2F;from16 v1,v2</td>
+<td>将16位的v2寄存器对（一组）中的值移入到8位的v1寄存器中</td>
+</tr>
+<tr>
+<td align="center">move-wide&#x2F;16 v1,v2</td>
+<td>将16位的v2寄存器对（一组）中的值移入到16位的v1寄存器中</td>
+</tr>
+<tr>
+<td align="center">move-object v1,v2</td>
+<td>将v2中的对象指针移入到v1寄存器中</td>
+</tr>
+<tr>
+<td align="center">move-object&#x2F;from16 v1,v2</td>
+<td>将16位的v2寄存器中的对象指针移入到v1（8位）寄存器中</td>
+</tr>
+<tr>
+<td align="center">move-object&#x2F;16 v1,v2</td>
+<td>将16位的v2寄存器中的对象指针移入到v1（16位）寄存器中</td>
+</tr>
+<tr>
+<td align="center">move-result v1</td>
+<td>将这个指令的上一条指令计算结果(方法的话就是返回值)，移入到v1寄存器中（需要配合invoke-static、invoke-virtual等指令使用）</td>
+</tr>
+<tr>
+<td align="center">move-result-object v1</td>
+<td>将上条计算结果的对象指针移入v1寄存器</td>
+</tr>
+<tr>
+<td align="center">move-result-wide v1</td>
+<td>将上条计算结果（双字）的对象指针移入v1寄存器</td>
+</tr>
+<tr>
+<td align="center">move-exception v1</td>
+<td>将异常移入v1寄存器，用于捕获try-catch语句中的异常</td>
+</tr>
+</tbody></table>
+<h4 id="2-返回值"><a href="#2-返回值" class="headerlink" title="2.返回值"></a>2.返回值</h4><table>
+<thead>
+<tr>
+<th align="center">指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">return-void</td>
+<td>返回void，即直接返回</td>
+</tr>
+<tr>
+<td align="center">return v1</td>
+<td>返回v1寄存器中的值</td>
+</tr>
+<tr>
+<td align="center">return-object v1</td>
+<td>返回v1寄存器中的对象指针</td>
+</tr>
+<tr>
+<td align="center">return-wide v1</td>
+<td>返回双字型结果给v1寄存器</td>
+</tr>
+</tbody></table>
+<h4 id="3-常量操作"><a href="#3-常量操作" class="headerlink" title="3.常量操作"></a>3.常量操作</h4><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>const(&#x2F;4、&#x2F;16、&#x2F;hight16) v1 xxx</td>
+<td>将常量xxx赋值给v1寄存器，&#x2F;后的类型，需要根据xxx的长度选择</td>
+</tr>
+<tr>
+<td>const-wide(&#x2F;16、&#x2F;32、&#x2F;hight16) v1 xxx</td>
+<td>将双字型常量xxx赋值给v1寄存器，&#x2F;后的类型，需要根据xxx的长度选择</td>
+</tr>
+<tr>
+<td>const-string(&#x2F;jumbo) v1 “aaa”</td>
+<td>将字符串常量”aaa”赋给v1寄存器，过长时需要加上jumbo</td>
+</tr>
+<tr>
+<td>const-class v1 La&#x2F;b&#x2F;TargetClass</td>
+<td>将Class常量a.b.TargetClass赋值给v1，等价于a.b.TargetClass.class</td>
+</tr>
+</tbody></table>
+<h4 id="4-方法调用"><a href="#4-方法调用" class="headerlink" title="4. 方法调用"></a>4. 方法调用</h4><table>
+<thead>
+<tr>
+<th align="center">指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">invoke-virtual</td>
+<td>用于调用一般的，非private、非static、非final、非构造函数的方法，它的第一个参数往往会传p0，也就是this指针</td>
+</tr>
+<tr>
+<td align="center">invoke-super</td>
+<td>用于调用父类中的方法，其他和invoke-virtual保持一致</td>
+</tr>
+<tr>
+<td align="center">invoke-direct</td>
+<td>用于调用private修饰的方法，或者构造方法</td>
+</tr>
+<tr>
+<td align="center">invoke-static</td>
+<td>用于调用静态方法，比如一些工具类</td>
+</tr>
+<tr>
+<td align="center">invoke-interface</td>
+<td>用于调用interface中的方法</td>
+</tr>
+</tbody></table>
+<h4 id="5-if语句"><a href="#5-if语句" class="headerlink" title="5.if语句"></a>5.if语句</h4><p>模板是 <code>if-[test] v0,v1 [condition]</code>,test如下,condition为条件满足后的语句,一般会是跳转,<em><strong>另外需要注意的是,Java判断和smail判断一般是相反的</strong></em></p>
+<p><code>if-le v0, v1, :cond_7</code>翻译过来就是 <code>if(v0&lt;=v1):&#123;:cond_7&#125;</code></p>
+<p><code>if-ez v0 :cond_4</code>翻译过来是 <code>if(v0==0)&#123;:cond_4&#125;</code></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>if-eq v1,v2</td>
+<td>判断两个寄存器中的值是否相等</td>
+</tr>
+<tr>
+<td>if-ne v1,v2</td>
+<td>判断两个寄存器中的值是否不相等</td>
+</tr>
+<tr>
+<td>if-lt v1,v2</td>
+<td>判断v1寄存器中的值是否小于v2寄存器中的值（lt &#x3D;&#x3D; less than）</td>
+</tr>
+<tr>
+<td>if-ge v1,v2</td>
+<td>判断v1寄存器中的值是否大于或等于v2寄存器中的值（ge &#x3D;&#x3D; great than or equals）</td>
+</tr>
+<tr>
+<td>if-gt v1,v2</td>
+<td>判断v1寄存器中的值是否大于v2寄存器中的值（gt &#x3D;&#x3D; great than）</td>
+</tr>
+<tr>
+<td>if-le v1,v2</td>
+<td>判断v1寄存器中的值是否小于或等于v2寄存器中的值（le &#x3D;&#x3D; less than or equals）</td>
+</tr>
+</tbody></table>
+<p><code> if-ez v1</code> 表示 <code>if(v1==0)</code>,其他的 <code>nez</code>,<code>ltz</code>,<code>gtz</code>,<code>lez</code>等等都是与零比较(z&#x3D; zero)</p>
+<h4 id="6-取值赋值"><a href="#6-取值赋值" class="headerlink" title="6.取值赋值"></a>6.取值赋值</h4><p>属性操作的分为：取值（get）和赋值（put）</p>
+<p>目标类型分为：数组（array）、实例（instance）和静态（static）三种，对应的缩写前缀就是a、i、s</p>
+<p>长度类型分为：默认（什么都不写）、<code>wide（宽，64位）</code>、<code>object（对象）</code>、<code>boolean</code>、<code>byte</code>、<code>char</code>、<code>short</code>（后面几种就不解释了，和Java一致）</p>
+<p>指令格式：<code>[指令名] [源寄存器], [目标字段所在对象寄存器], [字段指针]</code> 例如 <code>int mIntA = 100</code> :</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span>/<span class="number">4</span> v0, <span class="number">0x64</span></span><br><span class="line">iput v0, p0, Lcom/coderyuan/smali/MainActivity;-&gt;mIntA:I</span><br></pre></td></tr></table></figure>
+
+<p>以下是一些指令</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>iget</td>
+<td>取值，用于操作int这种的值类型</td>
+</tr>
+<tr>
+<td>iget-wide</td>
+<td>取值，用于操作wide型字段</td>
+</tr>
+<tr>
+<td>iget-object</td>
+<td>取值，用于操作对象引用</td>
+</tr>
+<tr>
+<td>iget-boolean</td>
+<td>取值，用于操作布尔类型</td>
+</tr>
+<tr>
+<td>iget-byte</td>
+<td>取值，用于操作字节类型</td>
+</tr>
+<tr>
+<td>iget-char</td>
+<td>取值，用于操作字符类型</td>
+</tr>
+<tr>
+<td>iget-short</td>
+<td>取值，用于操作short类型</td>
+</tr>
+<tr>
+<td>iput</td>
+<td>赋值，用于操作int这种的值类型</td>
+</tr>
+<tr>
+<td>iput-wide</td>
+<td>赋值，用于操作wide型字段</td>
+</tr>
+<tr>
+<td>iput-object</td>
+<td>赋值，用于操作对象引用</td>
+</tr>
+<tr>
+<td>iput-boolean</td>
+<td>赋值，用于操作布尔类型</td>
+</tr>
+<tr>
+<td>iput-byte</td>
+<td>赋值，用于操作字节类型</td>
+</tr>
+<tr>
+<td>iput-char</td>
+<td>赋值，用于操作字符类型</td>
+</tr>
+<tr>
+<td>iput-short</td>
+<td>赋值，用于操作short类型</td>
+</tr>
+</tbody></table>
+<p>例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String mStringA;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> mIntA;</span><br><span class="line">    <span class="keyword">private</span> Activity mActivityA;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">fieldTest</span><span class="params">()</span> &#123;</span><br><span class="line">        mStringA = <span class="string">&quot;Put String to mStringA&quot;</span>;</span><br><span class="line">        mIntA = <span class="number">100</span>;</span><br><span class="line">        mActivityA = <span class="built_in">this</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> mStringA.length();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># instance fields</span></span><br><span class="line">.field private mActivityA:Landroid/app/Activity;</span><br><span class="line"></span><br><span class="line">.field private mIntA:I</span><br><span class="line"></span><br><span class="line">.field private mStringA:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line"><span class="meta"># virtual methods</span></span><br><span class="line">.method public fieldTest()V</span><br><span class="line">    .registers <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    .line <span class="number">55</span></span><br><span class="line">    <span class="keyword">const</span>-string v0, <span class="string">&quot;Put String to mStringA&quot;</span></span><br><span class="line"></span><br><span class="line">    iput-object v0, p0, Lcom/coderyuan/smali/MainActivity;-&gt;mStringA:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    .line <span class="number">56</span></span><br><span class="line">    <span class="keyword">const</span>/<span class="number">16</span> v0, <span class="number">0x64</span></span><br><span class="line"></span><br><span class="line">    iput v0, p0, Lcom/coderyuan/smali/MainActivity;-&gt;mIntA:I</span><br><span class="line"></span><br><span class="line">    .line <span class="number">57</span></span><br><span class="line">    iput-object p0, p0, Lcom/coderyuan/smali/MainActivity;-&gt;mActivityA:Landroid/app/Activity;</span><br><span class="line"></span><br><span class="line">    .line <span class="number">59</span></span><br><span class="line">    iget-object v0, p0, Lcom/coderyuan/smali/MainActivity;-&gt;mStringA:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Ljava/lang/String;-&gt;length()I</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    .line <span class="number">60</span></span><br><span class="line">    .local v0, <span class="string">&quot;len&quot;</span>:I</span><br><span class="line">    <span class="keyword">return</span>-<span class="type">void</span></span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/e_one/article/details/81186716">引用自这里</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BE%85%E5%88%86%E7%B1%BB/" rel="tag"># 待分类</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/articles/2020/12/24/1608820908041.html" rel="prev" title="zeal文档小图标写入">
+      <i class="fa fa-chevron-left"></i> zeal文档小图标写入
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/articles/2021/01/03/1609664614152.html" rel="next" title="int *p[]和int (*p)[]区别">
+      int *p[]和int (*p)[]区别 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.3.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%A3%B0%E6%98%8E%E5%92%8C%E8%B0%83%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">方法声明和调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%A3%B0%E6%98%8E"><span class="nav-number">1.5.</span> <span class="nav-text">寄存器声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="nav-number">1.6.</span> <span class="nav-text">指令集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B5%8B%E5%80%BC"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">1.6.2.</span> <span class="nav-text">2.返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%B8%B8%E9%87%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">1.6.3.</span> <span class="nav-text">3.常量操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="nav-number">1.6.4.</span> <span class="nav-text">4. 方法调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-if%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.6.5.</span> <span class="nav-text">5.if语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%8F%96%E5%80%BC%E8%B5%8B%E5%80%BC"><span class="nav-number">1.6.6.</span> <span class="nav-text">6.取值赋值</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Elaina</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Elaina</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

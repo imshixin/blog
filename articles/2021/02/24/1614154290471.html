@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.xinit.xyz","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Mysql安装参考这个https:&#x2F;&#x2F;www.runoob.com&#x2F;mysql&#x2F;mysql-install.html安装完成后会有一个root自动生成的密码，复制下来 Mysqld管理Windows下启动mysqld12net start mysqld  Linux下启动MySQL服务检查MySQL服务器是否启动 12ps -ed |grep mysqld  启动服务： 123cd &#x2F;usr&#x2F;b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql使用">
+<meta property="og:url" content="http://blog.xinit.xyz/articles/2021/02/24/1614154290471.html">
+<meta property="og:site_name" content="Elaina&#96;s Blog">
+<meta property="og:description" content="Mysql安装参考这个https:&#x2F;&#x2F;www.runoob.com&#x2F;mysql&#x2F;mysql-install.html安装完成后会有一个root自动生成的密码，复制下来 Mysqld管理Windows下启动mysqld12net start mysqld  Linux下启动MySQL服务检查MySQL服务器是否启动 12ps -ed |grep mysqld  启动服务： 123cd &#x2F;usr&#x2F;b">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://b3logfile.com/bing/20190525.jpg?imageView2/1/w/960/h/540/interlace/1/q/100">
+<meta property="article:published_time" content="2021-02-24T08:11:30.000Z">
+<meta property="article:modified_time" content="2021-03-05T04:35:31.000Z">
+<meta property="article:author" content="Elaina">
+<meta property="article:tag" content="待分类">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://b3logfile.com/bing/20190525.jpg?imageView2/1/w/960/h/540/interlace/1/q/100">
+
+<link rel="canonical" href="http://blog.xinit.xyz/articles/2021/02/24/1614154290471">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>mysql使用 | Elaina`s Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Elaina`s Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.xinit.xyz/articles/2021/02/24/1614154290471.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Elaina">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elaina`s Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mysql使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-24 16:11:30" itemprop="dateCreated datePublished" datetime="2021-02-24T16:11:30+08:00">2021-02-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-05 12:35:31" itemprop="dateModified" datetime="2021-03-05T12:35:31+08:00">2021-03-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://b3logfile.com/bing/20190525.jpg?imageView2/1/w/960/h/540/interlace/1/q/100"></p>
+<h2 id="Mysql安装"><a href="#Mysql安装" class="headerlink" title="Mysql安装"></a>Mysql安装</h2><p>参考这个<a target="_blank" rel="noopener" href="https://www.runoob.com/mysql/mysql-install.html">https://www.runoob.com/mysql/mysql-install.html</a><br><strong>安装完成后会有一个root自动生成的密码，复制下来</strong></p>
+<h2 id="Mysqld管理"><a href="#Mysqld管理" class="headerlink" title="Mysqld管理"></a>Mysqld管理</h2><h3 id="Windows下启动mysqld"><a href="#Windows下启动mysqld" class="headerlink" title="Windows下启动mysqld"></a>Windows下启动mysqld</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">net start mysqld</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux下启动MySQL服务"><a href="#Linux下启动MySQL服务" class="headerlink" title="Linux下启动MySQL服务"></a>Linux下启动MySQL服务</h3><p>检查MySQL服务器是否启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ps -ed |grep mysqld</span><br></pre></td></tr></table></figure>
+
+<p>启动服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /usr/bin</span><br><span class="line">./mysqld_safe &amp;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mysql-管理"><a href="#mysql-管理" class="headerlink" title="mysql 管理"></a>mysql 管理</h2><h3 id="登录mysql"><a href="#登录mysql" class="headerlink" title="登录mysql"></a>登录mysql</h3><p>在已添加环境目录条件下，直接打开命令行窗口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>输入安装时生成的密码，第一次使用需要修改root密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">alter user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified by <span class="string">&#x27;新密码&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h3><p>在root用户下,添加用户的方法<br>一种是权限账号分别赋予的方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">grant usage on [db].[table] to <span class="string">&#x27;[username]&#x27;</span>@<span class="string">&#x27;[host]&#x27;</span> identified by <span class="string">&#x27;[password]&#x27;</span> with grant option;</span><br><span class="line">grant <span class="keyword">select</span>,update on *.* to <span class="string">&#x27;[username]&#x27;</span>@<span class="string">&#x27;[host]&#x27;</span>;</span><br><span class="line">grant insert on *.* to <span class="string">&#x27;[username]&#x27;</span>@<span class="string">&#x27;[host]&#x27;</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>另一种就是将两个步骤结合：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">grant [privileges] on [db].[table] to <span class="string">&#x27;[username]&#x27;</span>@<span class="string">&#x27;[host]&#x27;</span> identified by <span class="string">&#x27;[password]&#x27;</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>说明:</p>
+<ol>
+<li>db: 赋予指定的数据库权限，*代表所有库</li>
+<li>table: 赋予指定的数据表权限，*代表所有表</li>
+<li>username:用户名</li>
+<li>host: 登录主机，%代表任意（192.168.1.%代表192.168.1.0-192.168.1.255，其他类推）</li>
+<li>password: 密码</li>
+<li>privileges:权限，多个用<code>,</code>隔开，可选如下<ul>
+<li>select</li>
+<li>insert</li>
+<li>update</li>
+<li>delete</li>
+<li>create</li>
+<li>…….</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>注意：</strong>在注意需要执行 <strong>FLUSH PRIVILEGES</strong> 语句。 这个命令执行后会重新载入授权表。</p>
+<p>如果不使用该命令，重启mysql服务器前无法使用新账号登录<br>####</p>
+</blockquote>
+<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><h4 id="查看所有用户-select-User-Host-from-mysql-user"><a href="#查看所有用户-select-User-Host-from-mysql-user" class="headerlink" title="查看所有用户:select User,Host from mysql.user;"></a>查看所有用户:<code>select User,Host from mysql.user;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; select User,Host from mysql.user;</span><br><span class="line">+---------------+-----------+</span><br><span class="line">| User          | Host      |</span><br><span class="line">+---------------+-----------+</span><br><span class="line">| imsixn        | localhost |</span><br><span class="line">| mysql.session | localhost |</span><br><span class="line">| mysql.sys     | localhost |</span><br><span class="line">| root          | localhost |</span><br><span class="line">| shixin        | localhost |</span><br><span class="line">+---------------+-----------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="选择数据库：use-dbname"><a href="#选择数据库：use-dbname" class="headerlink" title="选择数据库：use dbname;"></a>选择数据库：<code>use dbname;</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; use shixindb;</span><br><span class="line">Database changed</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看当前使用的数据库：select-database"><a href="#查看当前使用的数据库：select-database" class="headerlink" title="查看当前使用的数据库：select database();"></a>查看当前使用的数据库：<code>select database();</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">select</span> database();</span><br><span class="line">+------------+</span><br><span class="line">| database() |</span><br><span class="line">+------------+</span><br><span class="line">| shixindb   |</span><br><span class="line">+------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示所有数据库：show-databases"><a href="#显示所有数据库：show-databases" class="headerlink" title="显示所有数据库：show databases;"></a>显示所有数据库：<code>show databases;</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">....省略一部分</span><br><span class="line">+--------------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示指定数据库中的所有表：show-tables"><a href="#显示指定数据库中的所有表：show-tables" class="headerlink" title="显示指定数据库中的所有表：show tables;"></a>显示指定数据库中的所有表：<code>show tables;</code></h4><p>使用前需要用use指定数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; show tables;</span><br><span class="line">+--------------------+</span><br><span class="line">| Tables_in_shixindb |</span><br><span class="line">+--------------------+</span><br><span class="line">| demo1              |</span><br><span class="line">| emptb              |</span><br><span class="line">+--------------------+</span><br><span class="line">2 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示数据表结构：show-columns-from-数据表"><a href="#显示数据表结构：show-columns-from-数据表" class="headerlink" title="显示数据表结构：show columns from 数据表"></a>显示数据表结构：<code>show columns from 数据表</code></h4><p>选择数据表时可以用<code>数据库.数据表</code>，另外也可以用<code>desc 数据表</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt;desc shixindb.demo1;</span><br><span class="line">...省略</span><br><span class="line">mysql&gt; show columns from shixindb.demo1;</span><br><span class="line">+-----------+------------------+------+-----+---------+----------------+</span><br><span class="line">| Field     | Type             | Null | Key | Default | Extra          |</span><br><span class="line">+-----------+------------------+------+-----+---------+----------------+</span><br><span class="line">| sx_id     | int(10) unsigned | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">...省略</span><br><span class="line">+-----------+------------------+------+-----+---------+----------------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h2 id="mysql语法"><a href="#mysql语法" class="headerlink" title="mysql语法"></a>mysql语法</h2><h4 id="创建数据库：create-database-数据库名"><a href="#创建数据库：create-database-数据库名" class="headerlink" title="创建数据库：create database 数据库名;"></a>创建数据库：<code>create database 数据库名;</code></h4><p><code>create database &#123;if not exist&#125; [dbname] &#123;default character set [charset] collate [collate]&#125;</code></p>
+<ul>
+<li>if not exist:不存在该库时创建该库</li>
+<li>dbname: 数据库名</li>
+<li>default char…：设置默认编码集和检验方式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; create database demo;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除数据库：drop-database-数据库名"><a href="#删除数据库：drop-database-数据库名" class="headerlink" title="删除数据库：drop database 数据库名;"></a>删除数据库：<code>drop database 数据库名;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; drop database demo;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建数据表：create-table-表名"><a href="#创建数据表：create-table-表名" class="headerlink" title="创建数据表：create table 表名"></a>创建数据表：<code>create table 表名</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">create table [tablename] (column_name column_type ,...)engine=InnoDB default charset=utf8</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>tablename：表名</li>
+<li>cloumn_name：列名</li>
+<li>column_type: 值类型</li>
+<li>engine：数据库储存引擎，可省略</li>
+<li>charset：编码集，可省略；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table demoo(</span><br><span class="line">    -&gt; stu_id int(11) not null auto_increment,</span><br><span class="line">    -&gt; stu_name varchar(40) not null,</span><br><span class="line">    -&gt; primary key (stu_id));</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line">mysql&gt; show tables;</span><br><span class="line">+--------------------+</span><br><span class="line">| Tables_in_shixindb |</span><br><span class="line">+--------------------+</span><br><span class="line">| demoo              |</span><br><span class="line">+--------------------+</span><br><span class="line">1 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>primary key 指定主键</p>
+<p>not null 指定该列所有值非空</p>
+<p>auto_increment指定该值自动增加</p>
+<h4 id="删除数据表：drop-table-表名"><a href="#删除数据表：drop-table-表名" class="headerlink" title="删除数据表：drop table 表名;"></a>删除数据表：<code>drop table 表名;</code></h4><p>删除数据表有两种方式</p>
+<ul>
+<li><p><code>drop table 表名</code>：</p>
+<p>完全删除表，表的数据和表结构都将删除</p>
+</li>
+<li><p><code>truncate table 表名</code>：</p>
+<p>删除表中欧过的所有数据，自增的主键也会重新开始</p>
+</li>
+</ul>
+<blockquote>
+<p><code>delete from 表名</code>也可以删除表中所有数据，但是它不会清楚计数，添加新行时，自增主键不会重新开始计数</p>
+</blockquote>
+<h4 id="插入数据：insert"><a href="#插入数据：insert" class="headerlink" title="插入数据：insert"></a>插入数据：<code>insert</code></h4><p><code>insert into [tbname] (column1,column2,...) values (v1,v2,...);</code></p>
+<p>自增主键可以省略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; insert into demoo (stu_name) values (&#x27;李三&#x27;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br></pre></td></tr></table></figure>
+
+<p>如果所有的列都要添加数据可以不规定列进行添加数据(主键用0或者null代替)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; insert into demoo values (null,&#x27;张四&#x27;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>然后我们有了两个数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; select * from demoo;</span><br><span class="line">+--------+----------+</span><br><span class="line">| stu_id | stu_name |</span><br><span class="line">+--------+----------+</span><br><span class="line">|      1 | 李三     |</span><br><span class="line">|      2 | 张四     |</span><br><span class="line">+--------+----------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询数据：select-from-表名"><a href="#查询数据：select-from-表名" class="headerlink" title="查询数据：select * from 表名;"></a>查询数据：<code>select * from 表名;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT column_name,column_name</span><br><span class="line">FROM table_name</span><br><span class="line">[WHERE Clause]</span><br><span class="line">[LIMIT N][ OFFSET M] [GROUP BY O][having G][order by Q]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>SELECT 命令可以读取一条或者多条记录。</li>
+<li>使用星号（*）来代替其他字段，SELECT语句会返回表的所有字段数据</li>
+<li>使用 WHERE 语句来包含任何条件。可省略</li>
+<li>使用 LIMIT 属性来设定返回的记录数。可省略</li>
+<li>通过OFFSET指定SELECT语句开始查询的数据偏移量。默认情况下偏移量为0。可省略</li>
+<li>通过group by 进行分组</li>
+<li>having用于对where和group by查询出来的分组经行过滤，查出满足条件的分组结果。它是一个过滤声明，是在查询返回结果集以后对查询结果进行的过滤操作。</li>
+<li>order by 进行排序</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; select stu_id,stu_name from demoo where stu_id=1 limit 1 offset 0;</span><br><span class="line">+--------+----------+</span><br><span class="line">| stu_id | stu_name |</span><br><span class="line">+--------+----------+</span><br><span class="line">|      1 | 李三     |</span><br><span class="line">+--------+----------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+
+<h5 id="where子句"><a href="#where子句" class="headerlink" title="where子句"></a>where子句</h5><p>可以用&#x3D;，&gt;,&lt;,&gt;&#x3D;,&lt;&#x3D;,!&#x3D;或&lt;&gt;分别代表等于，大于，小于，大于等于，小于等于，不等：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; select * from demoo where stu_id &gt;1;</span><br><span class="line">+--------+----------+</span><br><span class="line">| stu_id | stu_name |</span><br><span class="line">+--------+----------+</span><br><span class="line">|      2 | 张四     |</span><br><span class="line">+--------+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>用<code>and or</code>拼接多个条件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; select * from demoo where stu_id &gt;1 or stu_id != 1;</span><br><span class="line">+--------+----------+</span><br><span class="line">| stu_id | stu_name |</span><br><span class="line">+--------+----------+</span><br><span class="line">|      2 | 张四     |</span><br><span class="line">+--------+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="更新数据-update-tbname-set-field1-value1"><a href="#更新数据-update-tbname-set-field1-value1" class="headerlink" title="更新数据:update tbname set field1=value1...;"></a>更新数据:<code>update tbname set field1=value1...;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">UPDATE table_name SET field1=new-value1, field2=new-value2</span><br><span class="line">[WHERE Clause]</span><br></pre></td></tr></table></figure>
+
+<p><strong>不加where的话，表中所有的数据都将被替换</strong></p>
+<p>将某一值改回默认值：<code>update tbname set field=default where ...</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; update demoo set stu_name=&#x27;李四&#x27; where stu_id=2;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line">mysql&gt; select * from demoo;</span><br><span class="line">+--------+----------+</span><br><span class="line">| stu_id | stu_name |</span><br><span class="line">+--------+----------+</span><br><span class="line">|      1 | 李三     |</span><br><span class="line">|      2 | 李四     |</span><br><span class="line">+--------+----------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除某行数据：delete-from-tbname-where"><a href="#删除某行数据：delete-from-tbname-where" class="headerlink" title="删除某行数据：delete from tbname [where];"></a>删除某行数据：<code>delete from tbname [where];</code></h4><p><strong>不写where条件的话，将会删除所有数据</strong></p>
+<p>删除某一项后，主键计数不会改变</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; delete from demoo where stu_id=2;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into demoo values(null,&#x27;王二&#x27;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from demoo;</span><br><span class="line">+--------+----------+</span><br><span class="line">| stu_id | stu_name |</span><br><span class="line">+--------+----------+</span><br><span class="line">|      1 | 李三     |</span><br><span class="line">|      3 | 王二     |</span><br><span class="line">+--------+----------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h4 id="LIKE-子句"><a href="#LIKE-子句" class="headerlink" title="LIKE 子句"></a>LIKE 子句</h4><p>举例：</p>
+<ul>
+<li><p><code>show variables like &#39;character%&#39;</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysql&gt; show variables like &#x27;character%&#x27;;</span><br><span class="line">+--------------------------+------------------------------------------------------+</span><br><span class="line">| Variable_name            | Value                                                |</span><br><span class="line">+--------------------------+------------------------------------------------------+</span><br><span class="line">| character_set_client     | utf8                                                 |</span><br><span class="line">| character_set_connection | utf8                                                 |</span><br><span class="line">...</span><br><span class="line">+--------------------------+------------------------------------------------------+</span><br><span class="line">8 rows in set, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure></li>
+<li><p><code>select * from demoo where stu_name like &#39;李%&#39;</code>:</p>
+</li>
+</ul>
+<p><code>%</code>类似于通配符<code>*</code>,表示任意 0 个或多个字符。可匹配任意类型和长度的字符，有些情况下若是中文，请使用两个百分号（%%）表示。</p>
+<p><code>_</code>表示任意单个字符。匹配单个任意字符，它常用来限制表达式的字符长度语句。</p>
+<p><code>[]</code>表示括号内所列字符中的一个（类似正则表达式）。指定一个字符、字符串或范围，要求所匹配对象为它们中的任一个。</p>
+<p><code>[^]</code> 表示不在括号所列之内的单个字符。其取值和 [] 相同，但它要求所匹配对象为指定字符以外的任一个字符。</p>
+<p>查询内容包含通配符时,由于通配符的缘故，导致我们查询特殊字符 “%”、“_”、“[” 的语句无法正常实现，而把特殊字符用 “[ ]” 括起便可正常查询。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BE%85%E5%88%86%E7%B1%BB/" rel="tag"># 待分类</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/articles/2021/01/03/1609664614152.html" rel="prev" title="int *p[]和int (*p)[]区别">
+      <i class="fa fa-chevron-left"></i> int *p[]和int (*p)[]区别
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/articles/2022/02/03/1643859921510.html" rel="next" title="Docker入门学习">
+      Docker入门学习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Mysql安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysqld%E7%AE%A1%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">Mysqld管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E4%B8%8B%E5%90%AF%E5%8A%A8mysqld"><span class="nav-number">2.1.</span> <span class="nav-text">Windows下启动mysqld</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E4%B8%8B%E5%90%AF%E5%8A%A8MySQL%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.2.</span> <span class="nav-text">Linux下启动MySQL服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-%E7%AE%A1%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">mysql 管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95mysql"><span class="nav-number">3.1.</span> <span class="nav-text">登录mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="nav-number">3.2.</span> <span class="nav-text">添加用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="nav-number">3.3.</span> <span class="nav-text">其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7-select-User-Host-from-mysql-user"><span class="nav-number">3.3.1.</span> <span class="nav-text">查看所有用户:select User,Host from mysql.user;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9Ause-dbname"><span class="nav-number">3.3.2.</span> <span class="nav-text">选择数据库：use dbname;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E4%BD%BF%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9Aselect-database"><span class="nav-number">3.3.3.</span> <span class="nav-text">查看当前使用的数据库：select database();</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9Ashow-databases"><span class="nav-number">3.3.4.</span> <span class="nav-text">显示所有数据库：show databases;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E8%A1%A8%EF%BC%9Ashow-tables"><span class="nav-number">3.3.5.</span> <span class="nav-text">显示指定数据库中的所有表：show tables;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%BB%93%E6%9E%84%EF%BC%9Ashow-columns-from-%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">3.3.6.</span> <span class="nav-text">显示数据表结构：show columns from 数据表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql%E8%AF%AD%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">mysql语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9Acreate-database-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="nav-number">4.0.1.</span> <span class="nav-text">创建数据库：create database 数据库名;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9Adrop-database-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="nav-number">4.0.2.</span> <span class="nav-text">删除数据库：drop database 数据库名;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E8%A1%A8%EF%BC%9Acreate-table-%E8%A1%A8%E5%90%8D"><span class="nav-number">4.0.3.</span> <span class="nav-text">创建数据表：create table 表名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E8%A1%A8%EF%BC%9Adrop-table-%E8%A1%A8%E5%90%8D"><span class="nav-number">4.0.4.</span> <span class="nav-text">删除数据表：drop table 表名;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%9Ainsert"><span class="nav-number">4.0.5.</span> <span class="nav-text">插入数据：insert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%EF%BC%9Aselect-from-%E8%A1%A8%E5%90%8D"><span class="nav-number">4.0.6.</span> <span class="nav-text">查询数据：select * from 表名;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#where%E5%AD%90%E5%8F%A5"><span class="nav-number">4.0.6.1.</span> <span class="nav-text">where子句</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE-update-tbname-set-field1-value1"><span class="nav-number">4.0.7.</span> <span class="nav-text">更新数据:update tbname set field1&#x3D;value1...;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%9F%90%E8%A1%8C%E6%95%B0%E6%8D%AE%EF%BC%9Adelete-from-tbname-where"><span class="nav-number">4.0.8.</span> <span class="nav-text">删除某行数据：delete from tbname [where];</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LIKE-%E5%AD%90%E5%8F%A5"><span class="nav-number">4.0.9.</span> <span class="nav-text">LIKE 子句</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Elaina</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Elaina</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
